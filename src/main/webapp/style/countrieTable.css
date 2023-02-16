@@ -1,0 +1,36 @@
+.ui-datatable-odd {
+	background: #BAC0C0 !important;
+}
+
+.ui-paginator {
+	background: #66B281 !important;
+}
+
+.ui-selectbooleanbutton.ui-state-active {
+	background: #34495E !important;
+	border-color: #34495E !important;
+}
+
+.ui-state-default.ui-sortable-column.ui-state-hover {
+	color: #66B281 !important;
+}
+
+.ui-datatable-tablewrapper {
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
+	border-top-left-radius: 30px !important;
+	border-top-right-radius: 30px !important;
+}
+
+.ui-datatable-header {
+	border-radius: 30px !important;
+}
+
+.ui-paginator.ui-paginator-top a {
+	color: #000 !important;
+}
+
+body .ui-datatable thead th {
+	background: #34495E !important;
+	color: white;
+}

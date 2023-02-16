@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="style/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="style/countrieTable.css" />
+	<title>Länder_Übersicht</title>
+</h:head>
+<h:body>
+
+	<div class="card menu_bar">
+		<p:tabMenu activeIndex="0">
+			<p:menuitem value="Übersicht" outcome="index.xhtml"
+				icon="pi pi-fw pi-book">
+			</p:menuitem>
+			<p:menuitem value="Editieren" outcome="editor.xhtml" disabled="#{!loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-pencil">
+			</p:menuitem>
+			<p:menuitem value="Prüfen" outcome="unconfirm.xhtml" disabled="#{!loginController.isMasterUser()}"
+				icon="pi pi-fw pi-check-square">
+			</p:menuitem>
+			<p:menuitem value="Login" outcome="login.xhtml" disabled="#{loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-user">
+			</p:menuitem>
+			<p:menuitem value="Registrieren" outcome="registration.xhtml" disabled="#{loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-user-plus">
+			</p:menuitem>
+			<p:menuitem value="Logout" actionListener="#{logoutController.userLogout()}" disabled="#{!loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-times">
+			</p:menuitem>
+		</p:tabMenu>
+	</div>
+
+	<div class="data_table">
+		<h:form id="form_index">
+
+			<p:growl id="msg_index" showDetail="true" />
+
+			<p:dataTable id="countrieTable" var="countrieColumn"
+				value="#{countrieController.countrieList}"
+				widgetVar="countriesTable"
+				globalFilterFunction="#{countrieController.getGlobalFilterFunction}"
+				emptyMessage="Es wurde kein passends Land gefunden"
+				allowUnsorting="true" sortMode="single" paginator="true" rows="20"
+				rowsPerPageTemplate="20,40,60" rowStyleClass="odd-row, even-row">
+
+				<f:facet name="header">
+					<div class="justify_center">
+						<p:inputText id="globalFilter"
+							onkeyup="PF('countriesTable').filter()"
+							placeholder="Suchfeld für Land oder Landcode" style="width:400px">
+						</p:inputText>
+					</div>
+					<div class="justify_center">
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2015}" onLabel="2015"
+							offLabel="2015" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2016}" onLabel="2016"
+							offLabel="2016" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2017}" onLabel="2017"
+							offLabel="2017" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2018}" onLabel="2018"
+							offLabel="2018" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2019}" onLabel="2019"
+							offLabel="2019" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2020}" onLabel="2020"
+							offLabel="2020" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2021}" onLabel="2021"
+							offLabel="2021" style="width:6rem" onchange="submit()" />
+						<p:selectBooleanButton class="filter_row_button"
+							value="#{countrieService.column2022}" onLabel="2022"
+							offLabel="2022" style="width:6rem" onchange="submit()" />
+					</div>
+				</f:facet>
+
+				<p:column field="countrieNameString" headerText="Land"
+					filterable="false" />
+
+				<p:column field="countrieCodeString" headerText="Landcode"
+					filterable="false" />
+
+				<p:column id="column2015" field="impactYear2015" headerText="2015"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2015()}" />
+
+				<p:column field="impactYear2016" headerText="2016"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2016()}" />
+
+				<p:column field="impactYear2017" headerText="2017"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2017()}" />
+
+				<p:column field="impactYear2018" headerText="2018"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2018()}" />
+
+				<p:column field="impactYear2019" headerText="2019"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2019()}" />
+
+				<p:column field="impactYear2020" headerText="2020"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2020()}" />
+
+				<p:column field="impactYear2021" headerText="2021"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2021()}" />
+
+				<p:column field="impactYear2022" headerText="2022"
+					filterable="false"
+					rendered="#{countrieController.valueOfColumn2022()}" />
+
+			</p:dataTable>
+		</h:form>
+	</div>
+</h:body>
+</html>

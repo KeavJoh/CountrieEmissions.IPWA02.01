@@ -1,0 +1,13 @@
+.login_registration_display {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	background: white;
+	border-radius: 15px;
+}
+
+.login_registration_button {
+	margin-top: 5px;
+	margin-bottom: 15px;
+}

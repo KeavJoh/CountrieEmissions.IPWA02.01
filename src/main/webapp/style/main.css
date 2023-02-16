@@ -1,0 +1,52 @@
+body {
+	background-color: #66B281 !important;
+	padding-top: 7em;
+}
+
+.filter_row_button {
+	margin-top: 1em !important;
+	margin-right: 1em !important;
+}
+
+.display_column {
+	flex-direction: column;
+}
+
+.justify_center {
+	display: flex;
+	justify-content: center !important;
+}
+
+.align_center {
+	align-items: center;
+}
+
+.ui-inputfield {
+	border: 1px solid #34495E !important;
+	color: #000;
+}
+
+.max_height {
+	height: 98vh !important;
+}
+
+.max_width {
+	width: 98vw;
+}
+
+.height_50 {
+	height: 50%;
+}
+
+.width_60 {
+	width: 60%;
+}
+
+.menu_bar {
+	position: fixed;
+	top:0;
+	width: 100%;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	border-radius: 30px;	
+}

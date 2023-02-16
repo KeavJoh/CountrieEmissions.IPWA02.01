@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="style/main.css" />
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="style/registration.css" />
+	<title>Insert title here</title>
+</h:head>
+<h:body class="max_height justify_center display_column">
+
+	<div class="card menu_bar">
+		<p:tabMenu activeIndex="4">
+			<p:menuitem value="Übersicht" outcome="index.xhtml"
+				icon="pi pi-fw pi-book">
+			</p:menuitem>
+			<p:menuitem value="Editieren" outcome="editor.xhtml"
+				disabled="#{!loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-pencil">
+			</p:menuitem>
+			<p:menuitem value="Prüfen" outcome="unconfirm.xhtml"
+				disabled="#{!loginController.isMasterUser()}"
+				icon="pi pi-fw pi-check-square">
+			</p:menuitem>
+			<p:menuitem value="Login" outcome="login.xhtml"
+				disabled="#{loginController.isLoggedUser()}" icon="pi pi-fw pi-user">
+			</p:menuitem>
+			<p:menuitem value="Registrieren" outcome="registration.xhtml"
+				disabled="#{loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-user-plus">
+
+			</p:menuitem>
+			<p:menuitem value="Logout" outcome="logout.xhtml"
+				disabled="#{!loginController.isLoggedUser()}"
+				icon="pi pi-fw pi-times">
+			</p:menuitem>
+		</p:tabMenu>
+	</div>
+
+	<h:form id="form_error_validation_msg">
+		<p:growl id="msg_errorValidate" showDetail="true" />
+	</h:form>
+
+	<h:form id="form_registration"
+		class="justify_center align_center login_registration_display">
+
+		<p:growl id="msg_registration" showDetail="true" />
+
+		<div class="justify_center align_center display_column">
+			<p:panelGrid id="registration_grid" columns="3"
+				class="justify_center">
+
+				<div class="ui-inputgroup-addon">
+					<i class="pi pi-user"></i>
+				</div>
+				<p:inputText id="registrationFirstName"
+					value="#{registrationController.firstNameString}"
+					placeholder="Vorname" required="true" />
+				<p:message for="registrationFirstName" display="icon" />
+
+				<div class="ui-inputgroup-addon">
+					<i class="pi pi-user"></i>
+				</div>
+				<p:inputText id="lastName"
+					value="#{registrationController.lastNameString}"
+					placeholder="Nachname" required="true" />
+				<p:message for="lastName" display="icon" />
+
+				<div class="ui-inputgroup-addon">
+					<i class="pi pi-envelope"></i>
+				</div>
+				<p:inputText id="email"
+					value="#{registrationController.emailString}" placeholder="Email"
+					required="true">
+					<p:keyFilter regEx="/[a-z0-9_.-@]/i" />
+				</p:inputText>
+				<p:message for="email" display="icon" />
+
+				<div class="ui-inputgroup-addon">
+					<i class="pi pi-key"></i>
+				</div>
+				<p:password id="password"
+					value="#{registrationController.passwordString}"
+					placeholder="Passwort" feedback="true" inline="true"
+					toggleMask="true" redisplay="true" required="true" />
+					<p:message for="password" display="icon" />
+
+				<div class="ui-inputgroup-addon">
+					<i class="pi pi-key"></i>
+				</div>
+				<p:inputText id="orgCode"
+					value="#{registrationController.organizationCodeString}"
+					placeholder="Organisationscode" required="true" />
+					<p:message for="orgCode" display="icon" />
+			</p:panelGrid>
+
+			<div class="login_registration_button">
+				<p:commandButton value="Registrieren"
+					actionListener="#{registrationController.userRegistration}"
+					update="registration_grid" />
+			</div>
+
+		</div>
+
+
+
+	</h:form>
+
+</h:body>
+</html>
